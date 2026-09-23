@@ -24,19 +24,22 @@ let tieMessages = ["Nobody won, why?", "Could this be more boring?","You were so
 let Messages = ""
 
 let playerColor = "white";
-let square1Color = "white";
-let square2Color = "white";
-let square3Color = "white";
-let square4Color = "white";
-let square5Color = "white";
-let square6Color = "white";
-let square7Color = "white";
-let square8Color = "white";
-let square9Color = "white";
+let square1Color = "black";
+let square2Color = "black";
+let square3Color = "black";
+let square4Color = "black";
+let square5Color = "black";
+let square6Color = "black";
+let square7Color = "black";
+let square8Color = "black";
+let square9Color = "black";
+
+let asciiColor = ""
 
 let gameIsWonBlue = false;
 let gameIsWonRed = false;
 let isTie = false;
+let gameIsStarted = false;
 
 
 function setup() {
@@ -46,12 +49,12 @@ function setup() {
 }
 
 function keyPressed() {
- if (gameIsWonBlue == false && gameIsWonRed == false && isTie == false) {
+ if (gameIsWonBlue == false && gameIsWonRed == false && isTie == false && gameIsStarted == true) {
   if (keyCode === (37)) {
     if (playerPosX === squarePos1) {
       playerPosX === squarePos3;
       timer = 0;
-      playerColor = "black";
+      playerColor = "white";
     } else {
       playerPosX -= 200;
     }
@@ -61,7 +64,7 @@ function keyPressed() {
      if (playerPosY === squarePos1) {
       playerPosY === squarePos3;
       timer = 0;
-      playerColor = "black";
+      playerColor = "white";
     } else {
       playerPosY -= 200;
     }
@@ -71,7 +74,7 @@ function keyPressed() {
      if (playerPosX === squarePos3) {
       playerPosX === squarePos1;
       timer = 0;
-      playerColor = "black";
+      playerColor = "white";
     } else {
       playerPosX += 200;
     }
@@ -81,273 +84,208 @@ function keyPressed() {
      if (playerPosY === squarePos3) {
       playerPosY === squarePos1;
       timer = 0;
-      playerColor = "black";
+      playerColor = "white";
     } else {
       playerPosY += 200;
     }
-  }
-
-  if (keyCode === ENTER) {
-    if (playerPosX == squarePos1 && playerPosY == squarePos1 && square1Color == "white" && gameIsWonBlue == false && gameIsWonRed == false && isTie == false) {
-      if (playerTurn == 1) {
-        square1Color = "red";
-        playerTurn += 1;
-      } else {
-        square1Color = "blue";
-        playerTurn = 1;
-      }
-    } if (playerPosX == squarePos1 && playerPosY == squarePos2 && square2Color == "white" && gameIsWonBlue == false && gameIsWonRed == false && isTie == false) {
-      if (playerTurn == 1) {
-        square2Color = "red";
-        playerTurn += 1;
-      } else {
-        square2Color = "blue";
-        playerTurn = 1;
-      }
-    } if (playerPosX == squarePos1 && playerPosY == squarePos3 && square3Color == "white" && gameIsWonBlue == false && gameIsWonRed == false && isTie == false) {
-      if (playerTurn == 1) {
-        square3Color = "red";
-        playerTurn += 1;
-      } else {
-        square3Color = "blue";
-        playerTurn = 1;
-      }
-    } if (playerPosX == squarePos2 && playerPosY == squarePos1 && square4Color == "white" && gameIsWonBlue == false && gameIsWonRed == false && isTie == false) {
-      if (playerTurn == 1) {
-        square4Color = "red";
-        playerTurn += 1;
-      } else {
-        square4Color = "blue";
-        playerTurn = 1;
-      }
-    } if (playerPosX == squarePos2 && playerPosY == squarePos2 && square5Color == "white" && gameIsWonBlue == false && gameIsWonRed == false && isTie == false) {
-      if (playerTurn == 1) {
-        square5Color = "red";
-        playerTurn += 1;
-      } else {
-        square5Color = "blue";
-        playerTurn = 1;
-      }
-    } if (playerPosX == squarePos2 && playerPosY == squarePos3 && square6Color == "white" && gameIsWonBlue == false && gameIsWonRed == false && isTie == false) {
-      if (playerTurn == 1) {
-        square6Color = "red";
-        playerTurn += 1;
-      } else {
-        square6Color = "blue";
-        playerTurn = 1;
-      }
-    } if (playerPosX == squarePos3 && playerPosY == squarePos1 && square7Color == "white" && gameIsWonBlue == false && gameIsWonRed == false && isTie == false) {
-      if (playerTurn == 1) {
-        square7Color = "red";
-        playerTurn += 1;
-      } else {
-        square7Color = "blue";
-        playerTurn = 1;
-      }
-    } if (playerPosX == squarePos3 && playerPosY == squarePos2 && square8Color == "white" && gameIsWonBlue == false && gameIsWonRed == false && isTie == false) {
-      if (playerTurn == 1) {
-        square8Color = "red";
-        playerTurn += 1;
-      } else {
-        square8Color = "blue";
-        playerTurn = 1;
-      }
-    } if (playerPosX == squarePos3 && playerPosY == squarePos3 && square9Color == "white" && gameIsWonBlue == false && gameIsWonRed == false && isTie == false) {
-      if (playerTurn == 1) {
-        square9Color = "red";
-        playerTurn += 1;
-      } else {
-        square9Color = "blue";
-        playerTurn = 1;
-      }
-    } 
   }
  } else {
   if (keyCode === ENTER) {
     Messages = random(winMessages);
     AngerMessages = random(tieMessages);
-    square1Color = "white";
-    square2Color = "white";
-    square3Color = "white";
-    square4Color = "white";
-    square5Color = "white";
-    square6Color = "white";
-    square7Color = "white";
-    square8Color = "white";
-    square9Color = "white";
+    square1Color = "black";
+    square2Color = "black";
+    square3Color = "black";
+    square4Color = "black";
+    square5Color = "black";
+    square6Color = "black";
+    square7Color = "black";
+    square8Color = "black";
+    square9Color = "black";
     gameIsWonBlue = false;
     gameIsWonRed = false;
     isTie = false;
     playerTurn = 1;
+    withBot = false;
+    gameIsStarted = true;
   }
  }
 }
 
-
 function draw() {
-  if (gameIsWonBlue == false && gameIsWonRed == false && isTie == false) {
+  if (gameIsWonBlue == false && gameIsWonRed == false && isTie == false  && isTie == false && gameIsStarted == true ) {
   background("black");
   fill("white");
   rect(0,0,600,20);
 
-  textSize("13");
+  textSize(13);
   fill("black");
-  text("Boter kaas en eieren        1.0.0",20,15);
+  text("Tic Tac TTY       1.1.0",20,15);
   
   strokeWeight(0);
 
   //bord
+  if (playerTurn == 1) {
+    asciiColor = "red";
+  } else {
+    asciiColor = "blue";
+  }
 
-  fill(square1Color);
-  square(squarePos1-75,squarePos1-75,150);
+  fill(asciiColor);
+  textSize(100);
+  text("  #   #  ",150,squarePos1 + 40);
+  text("########",75,squarePos1 + 140);
+  text("  #   #  ",150,squarePos1 + 240);
+  text("########",75,squarePos1 + 340);
+  text("  #   #  ",150,squarePos1 + 440);
 
-  fill(square2Color);
-  square(squarePos1-75,squarePos2-75,150);
+  // eerste rij
+  if (square1Color == "red") {
+    fill(square1Color);
+    text("X",squarePos1 + 10,squarePos1 + 40);
+    } else if (square1Color == "blue") {
+    fill(square1Color);
+    text("O",squarePos1 + 5,squarePos1 + 40);
+  } 
 
-  fill(square3Color);
-  square(squarePos1-75,squarePos3-75,150);
+  if (square2Color == "red") {
+    fill(square2Color);
+    text("X",squarePos1 + 10,squarePos1 + 240);
+  } else if (square2Color == "blue") {
+    fill(square2Color);
+    text("O",squarePos1 + 5,squarePos1 + 240);
+  } 
 
-  fill(square4Color);
-  square(squarePos2-75,squarePos1-75,150);
+  if (square3Color == "red") {
+    fill(square3Color);
+    text("X",squarePos1 + 10,squarePos1 + 440);
+  } else if (square3Color == "blue") {
+    fill(square3Color);
+    text("O",squarePos1 + 5,squarePos1 + 440);
+  } 
 
-  fill(square5Color);
-  square(squarePos2-75,squarePos2-75,150);
+  //tweede rij
+  if (square4Color == "red") {
+    fill(square4Color);
+    text("X",squarePos1 + 170,squarePos1 + 40);
+    } else if (square4Color == "blue") {
+    fill(square4Color);
+    text("O",squarePos1 + 165,squarePos1 + 40);
+  } 
 
-  fill(square6Color);
-  square(squarePos2-75,squarePos3-75,150);
+  if (square5Color == "red") {
+    fill(square5Color);
+    text("X",squarePos1 + 170,squarePos1 + 240);
+  } else if (square5Color == "blue") {
+    fill(square5Color);
+    text("O",squarePos1 + 165,squarePos1 + 240);
+  } 
 
-  fill(square7Color);
-  square(squarePos3-75,squarePos1-75,150);
+  if (square6Color == "red") {
+    fill(square6Color);
+    text("X",squarePos1 + 170,squarePos1 + 440);
+  } else if (square6Color == "blue") {
+    fill(square6Color);
+    text("O",squarePos1 + 165,squarePos1 + 440);
+  } 
 
-  fill(square8Color);
-  square(squarePos3-75,squarePos2-75,150);
+  //derde rij
+   if (square7Color == "red") {
+    fill(square7Color);
+    text("X",squarePos1 + 330,squarePos1 + 40);
+    } else if (square7Color == "blue") {
+    fill(square7Color);
+    text("O",squarePos1 + 325,squarePos1 + 40);
+  } 
 
-  fill(square9Color);
-  square(squarePos3-75,squarePos3-75,150);
+  if (square8Color == "red") {
+    fill(square8Color);
+    text("X",squarePos1 + 330,squarePos1 + 240);
+  } else if (square8Color == "blue") {
+    fill(square8Color);
+    text("O",squarePos1 + 325,squarePos1 + 240);
+  } 
+
+  if (square9Color == "red") {
+    fill(square9Color);
+    text("X",squarePos1 + 330,squarePos1 + 440);
+  } else if (square9Color == "blue") {
+    fill(square9Color);
+    text("O",squarePos1 + 325,squarePos1 + 440);
+  } 
 
   //speler
   if (timer === 60) {
-    if (playerColor == "white") {
-      playerColor = "black";
+    if (playerColor == "black") {
+      playerColor = "white";
       timer = 0;
     } else {
-      playerColor = "white";
+      playerColor = "black";
        timer = 0;
     }
   }
-
-  fill(playerColor);
-  rect(playerPosX -30,playerPosY -25,20,50);
 
   //win checker
   
   //diagonalen 
   
   if (square1Color == "red" && square5Color == "red" && square9Color == "red"){
-    square1Color = "black";
-    square5Color = "black";
-    square9Color = "black";
     gameIsWonRed = true;
   } 
   if (square1Color == "blue" && square5Color == "blue" && square9Color == "blue"){
-    square1Color = "black";
-    square5Color = "black";
-    square9Color = "black";
     gameIsWonBlue = true;
   }
   if (square3Color == "red" && square5Color == "red" && square7Color == "red"){
-    square3Color = "black";
-    square5Color = "black";
-    square7Color = "black";
     gameIsWonRed = true;
   }
 
   if (square3Color == "blue" && square5Color == "blue" && square7Color == "blue" ){
-    square3Color = "black";
-    square5Color = "black";
-    square7Color = "black";
     gameIsWonBlue = true;
   }
 
-  // horizontaal
+  // verticaal
 
   if (square1Color == "red" && square2Color == "red" && square3Color == "red"){
-    square1Color = "black";
-    square2Color = "black";
-    square3Color = "black";
     gameIsWonRed = true;
   } 
   if (square1Color == "blue" && square2Color == "blue" && square3Color == "blue"){
-    square1Color = "black";
-    square2Color = "black";
-    square3Color = "black";
     gameIsWonBlue = true;
   }
   if (square4Color == "red" && square5Color == "red" && square6Color == "red"){
-    square4Color = "black";
-    square5Color = "black";
-    square6Color = "black";
     gameIsWonRed = true;
   } 
   if (square4Color == "blue" && square5Color == "blue" && square6Color == "blue" ){
-    square4Color = "black";
-    square5Color = "black";
-    square6Color = "black";
     gameIsWonBlue = true;
   }
   if (square7Color == "red" && square8Color == "red" && square9Color == "red"){
-    square7Color = "black";
-    square8Color = "black";
-    square9Color = "black";
     gameIsWonRed = true;
   } 
   if (square7Color == "blue" && square8Color == "blue" && square9Color == "blue" ){
-    square7Color = "black";
-    square8Color = "black";
-    square9Color = "black";
     gameIsWonBlue = true;
   }
 
-  //verticaal
+  //horizontaal
 
  if (square1Color == "red" && square4Color == "red" && square7Color == "red"){
-    square1Color = "black";
-    square4Color = "black";
-    square7Color = "black";
    gameIsWonRed = true;
   } 
   if (square1Color == "blue" && square4Color == "blue" && square7Color == "blue"){
-    square1Color = "black";
-    square4Color = "black";
-    square7Color = "black";
     gameIsWonBlue = true;
   }
   if (square2Color == "red" && square5Color == "red" && square8Color == "red"){
-    square2Color = "black";
-    square5Color = "black";
-    square8Color = "black";
     gameIsWonRed = true;
   } 
   if (square2Color == "blue" && square5Color == "blue" && square8Color == "blue" ){
-    square2Color = "black"
-    square5Color = "black"
-    square8Color = "black"
     gameIsWonBlue = true;
   }
   if (square3Color == "red" && square6Color == "red" && square9Color == "red"){
-    square3Color = "black"
-    square6Color = "black"
-    square9Color = "black"
     gameIsWonRed = true;
   } 
   if (square3Color == "blue" && square6Color == "blue" && square9Color == "blue" ){
-    square3Color = "black"
-    square6Color = "black"
-    square9Color = "black"
     gameIsWonBlue = true;
   }
 
-  if (square1Color != "white" && square2Color != "white" && square3Color != "white" && square4Color != "white" && square5Color != "white" && square6Color != "white" && square7Color != "white" && square8Color != "white" && square9Color != "white" && gameIsWonBlue == false && gameIsWonRed == false) {
+  if (square1Color != "black" && square2Color != "black" && square3Color != "black" && square4Color != "black" && square5Color != "black" && square6Color != "black" && square7Color != "black" && square8Color != "black" && square9Color != "black" && gameIsWonBlue == false && gameIsWonRed == false) {
     isTie = true;
   }
   
@@ -358,24 +296,103 @@ function draw() {
   background("black");
   fill("white");
   textSize(16);
-  text("[kjeld@nixos:~]$ boterkaaseneieren",20,20);
   text("[kjeld@nixos:~]$ ",20,110);
 
   if (gameIsWonBlue == true) {
+    text("[kjeld@nixos:~]$ tictactty",20,20);
     text ("blue won!",20,80); 
     text(Messages, 20, 50);
   } else if (gameIsWonRed == true) {
+    text("[kjeld@nixos:~]$ tictactty",20,20);
     text("red won!",20,80);
     text(Messages, 20,50);
   } else if (isTie == true) {
+    text("[kjeld@nixos:~]$ tictactty",20,20);
     text("You tied!",20,80);
     text(AngerMessages,20,50);
+  } else {
+    text("[kjeld@nixos:~]$ tictactty --help",20,20);
+    text("Welcome to Tic-tac-TTY, press return to play",20,50);
+    text("Usage: tictactty [options]",20,80);
   }
  } 
 }
 
-//function mouseReleased() {
-//  if (mouseButton === "right") {
-//
-//  }
-//}
+// checken of de muis op de juiste positie is
+function mouseReleased() {
+  if (mouseButton === "left") {
+    if (square1Color == "black" && mouseX >= squarePos1 - 35 && mouseX <= squarePos1 + 85 && mouseY >= squarePos1 - 35 && mouseY <= squarePos1 + 55 && gameIsStarted == true && gameIsWonBlue == false && gameIsWonRed == false) {
+      if (playerTurn == 1) {
+        square1Color = "red";
+        playerTurn += 1;
+      } else {
+        square1Color = "blue";
+        playerTurn = 1;
+      }
+    }  if (square2Color == "black" && mouseX >= squarePos1 - 35 && mouseX <= squarePos1 + 85 && mouseY >= squarePos1 + 165 && mouseY <= squarePos1 + 255 && gameIsStarted == true && gameIsWonBlue == false && gameIsWonRed == false) {
+      if (playerTurn == 1) {
+        square2Color = "red";
+        playerTurn += 1;
+      } else {
+        square2Color = "blue";
+        playerTurn = 1;
+      }
+    }   if (square3Color == "black" && mouseX >= squarePos1 - 35 && mouseX <= squarePos1 + 85 && mouseY >= squarePos1 + 365 && mouseY <= squarePos1 + 455 && gameIsStarted == true && gameIsWonBlue == false && gameIsWonRed == false) {
+      if (playerTurn == 1) {
+        square3Color = "red";
+        playerTurn += 1;
+      } else {
+        square3Color = "blue";
+        playerTurn = 1;
+      }
+    } if (square4Color == "black" && mouseX >= squarePos1 + 125 && mouseX <= squarePos1 + 245 && mouseY >= squarePos1 - 35 && mouseY <= squarePos1 + 55 && gameIsStarted == true && gameIsWonBlue == false && gameIsWonRed == false) {
+      if (playerTurn == 1) {
+        square4Color = "red";
+        playerTurn += 1;
+      } else {
+        square4Color = "blue";
+        playerTurn = 1;
+      }
+    }  if (square5Color == "black" && mouseX >= squarePos1 + 125 && mouseX <= squarePos1 + 245 && mouseY >= squarePos1 + 165 && mouseY <= squarePos1 + 255 && gameIsStarted == true && gameIsWonBlue == false && gameIsWonRed == false) {
+      if (playerTurn == 1) {
+        square5Color = "red";
+        playerTurn += 1;
+      } else {
+        square5Color = "blue";
+        playerTurn = 1;
+      }
+    }  if (square6Color == "black" && mouseX >= squarePos1 + 125 && mouseX <= squarePos1 + 245 && mouseY >= squarePos1 + 365 && mouseY <= squarePos1 + 455 && gameIsStarted == true && gameIsWonBlue == false && gameIsWonRed == false) {
+      if (playerTurn == 1) {
+        square6Color = "red";
+        playerTurn += 1;
+      } else {
+        square6Color = "blue";
+        playerTurn = 1;
+      }
+    } if (square7Color == "black" && mouseX >= squarePos1 + 285 && mouseX <= squarePos1 + 405 && mouseY >= squarePos1 - 35 && mouseY <= squarePos1 + 55 && gameIsStarted == true && gameIsWonBlue == false && gameIsWonRed == false) {
+      if (playerTurn == 1) {
+        square7Color = "red";
+        playerTurn += 1;
+      } else {
+        square7Color = "blue";
+        playerTurn = 1;
+      }
+    }  if (square8Color == "black" && mouseX >= squarePos1 + 285 && mouseX <= squarePos1 + 405 && mouseY >= squarePos1 + 165 && mouseY <= squarePos1 + 255 && gameIsStarted == true && gameIsWonBlue == false && gameIsWonRed == false) {
+      if (playerTurn == 1) {
+        square8Color = "red";
+        playerTurn += 1;
+      } else {
+        square8Color = "blue";
+        playerTurn = 1;
+      }
+    }  if (square9Color == "black" && mouseX >= squarePos1 + 285 && mouseX <= squarePos1 + 405 && mouseY >= squarePos1 + 365 && mouseY <= squarePos1 + 455 && gameIsStarted == true && gameIsWonBlue == false && gameIsWonRed == false) {
+      if (playerTurn == 1) {
+        square9Color = "red";
+        playerTurn += 1;
+      } else {
+        square9Color = "blue";
+        playerTurn = 1;
+      }
+    } 
+  }
+}
